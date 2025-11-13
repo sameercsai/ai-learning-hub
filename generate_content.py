@@ -10,10 +10,10 @@ from collections import defaultdict
 BRANDING = {
     'company_name': 'Cognitive Sprints',
     'tagline': 'AI Learning & Innovation Hub',
-    'website': 'https://cognitive-sprints.in',
+    'website': 'https://cognitivesprints.com',
     'primary_color': '#667eea',
     'secondary_color': '#764ba2',
-    'contact_email': 'sameer@cognitive-sprints.in',
+    'contact_email': 'sameer@cognitivesprints.com',
 }
 
 PRODUCT_KEYWORDS = ['launch', 'release', 'announce', 'unveil', 'introduce']
@@ -60,31 +60,32 @@ def classify_articles():
     return products, dict(industry_use_cases)
 
 def generate_website(products, industries):
-    html = f'''<!DOCTYPE html>
+    # Use triple quotes and regular string formatting to avoid f-string CSS issues
+    html = '''<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{BRANDING['company_name']} - AI Learning</title>
+    <title>''' + BRANDING['company_name'] + ''' - AI Learning</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f7fa; }
-        .header { background: linear-gradient(135deg, {BRANDING['primary_color']}, {BRANDING['secondary_color']}); 
+        .header { background: linear-gradient(135deg, ''' + BRANDING['primary_color'] + ''', ''' + BRANDING['secondary_color'] + '''); 
                   color: white; padding: 3rem 2rem; text-align: center; }
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
         .section { margin: 3rem 0; }
         .section-title { font-size: 2rem; color: #333; margin-bottom: 1.5rem; 
-                         border-bottom: 3px solid {BRANDING['primary_color']}; padding-bottom: 0.5rem; }
+                         border-bottom: 3px solid ''' + BRANDING['primary_color'] + '''; padding-bottom: 0.5rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
         .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .card h3 { color: {BRANDING['primary_color']}; margin-bottom: 1rem; }
-        .btn { display: inline-block; padding: 0.6rem 1.2rem; background: {BRANDING['primary_color']}; 
+        .card h3 { color: ''' + BRANDING['primary_color'] + '''; margin-bottom: 1rem; }
+        .btn { display: inline-block; padding: 0.6rem 1.2rem; background: ''' + BRANDING['primary_color'] + '''; 
                color: white; text-decoration: none; border-radius: 20px; margin-top: 1rem; }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>🤖 {BRANDING['company_name']}</h1>
-        <p>{BRANDING['tagline']}</p>
-        <p>Updated: {datetime.now().strftime('%B %d, %Y')}</p>
+        <h1>🤖 ''' + BRANDING['company_name'] + '''</h1>
+        <p>''' + BRANDING['tagline'] + '''</p>
+        <p>Updated: ''' + datetime.now().strftime('%B %d, %Y') + '''</p>
     </div>
     <div class="container">
         <div class="section">
@@ -117,14 +118,14 @@ def generate_website(products, industries):
                 </div>
 '''
     
-    html += f'''
+    html += '''
             </div>
         </div>
     </div>
     <div style="background: #2c3e50; color: white; text-align: center; padding: 2rem;">
-        <p>© {datetime.now().year} {BRANDING['company_name']}</p>
-        <p><a href="mailto:{BRANDING['contact_email']}" style="color: {BRANDING['primary_color']};">
-            {BRANDING['contact_email']}</a></p>
+        <p>© ''' + str(datetime.now().year) + ''' ''' + BRANDING['company_name'] + '''</p>
+        <p><a href="mailto:''' + BRANDING['contact_email'] + '''" style="color: ''' + BRANDING['primary_color'] + ''';">
+            ''' + BRANDING['contact_email'] + '''</a></p>
     </div>
 </body>
 </html>
@@ -133,21 +134,21 @@ def generate_website(products, industries):
     return html
 
 def generate_newsletter(products, industries):
-    newsletter = f'''<!DOCTYPE html>
+    newsletter = '''<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>AI Newsletter</title>
 </head>
 <body style="font-family: Arial; max-width: 600px; margin: 0 auto; background: #f5f7fa;">
-    <div style="background: linear-gradient(135deg, {BRANDING['primary_color']}, {BRANDING['secondary_color']}); 
+    <div style="background: linear-gradient(135deg, ''' + BRANDING['primary_color'] + ''', ''' + BRANDING['secondary_color'] + '''); 
                 color: white; padding: 30px; text-align: center;">
-        <h1>🤖 {BRANDING['company_name']}</h1>
-        <p>{BRANDING['tagline']}</p>
-        <p>{datetime.now().strftime('%B %d, %Y')}</p>
+        <h1>🤖 ''' + BRANDING['company_name'] + '''</h1>
+        <p>''' + BRANDING['tagline'] + '''</p>
+        <p>''' + datetime.now().strftime('%B %d, %Y') + '''</p>
     </div>
     <div style="background: white; padding: 30px;">
-        <h2 style="color: {BRANDING['primary_color']};">🚀 This Week's Top AI Products</h2>
+        <h2 style="color: ''' + BRANDING['primary_color'] + ''';">🚀 This Week's Top AI Products</h2>
 '''
     
     for i, product in enumerate(products[:5], 1):
@@ -159,19 +160,19 @@ def generate_newsletter(products, industries):
         </div>
 '''
     
-    newsletter += f'''
+    newsletter += '''
         <div style="text-align: center; margin: 30px 0;">
             <a href="https://sameer-ai-hub.netlify.app" 
-               style="display: inline-block; padding: 12px 30px; background: {BRANDING['primary_color']}; 
+               style="display: inline-block; padding: 12px 30px; background: ''' + BRANDING['primary_color'] + '''; 
                       color: white; text-decoration: none; border-radius: 25px;">
                 Visit Full Hub →
             </a>
         </div>
     </div>
     <div style="background: #2c3e50; color: white; padding: 20px; text-align: center;">
-        <p>{BRANDING['company_name']}</p>
-        <p><a href="mailto:{BRANDING['contact_email']}" style="color: {BRANDING['primary_color']};">
-            {BRANDING['contact_email']}</a></p>
+        <p>''' + BRANDING['company_name'] + '''</p>
+        <p><a href="mailto:''' + BRANDING['contact_email'] + '''" style="color: ''' + BRANDING['primary_color'] + ''';">
+            ''' + BRANDING['contact_email'] + '''</a></p>
     </div>
 </body>
 </html>
